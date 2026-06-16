@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Zine Studio is a bilingual AI Zine Prompt Generator for travel, fan, cultural, IP, photography, and personal journal projects."
+    />
+    <title>Zine Studio | AI Zine Prompt Generator</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Zine Studio home">
+          <span class="brand-title">ZINE STUDIO</span>
+          <span class="brand-subtitle">Create Your Zine. Tell Your Story.</span>
+        </a>
+
+        <div class="nav-links" aria-label="Section links">
+          <a href="#home">首页 <span>Home</span></a>
+          <a href="#zine-types">Zine 类型 <span>Zine Types</span></a>
+          <a href="#styles">设计风格 <span>Styles</span></a>
+          <a href="#examples">示例作品 <span>Examples</span></a>
+          <a href="#how-to-use">使用指南 <span>How to Use</span></a>
+          <a href="#roadmap">路线图 <span>Roadmap</span></a>
+        </div>
+
+        <div class="nav-actions">
+          <a
+            class="icon-button"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open GitHub"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.19-3.37-1.19-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.52 1.03 1.52 1.03.89 1.51 2.33 1.08 2.9.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.57 9.57 0 0 1 12 6c.85 0 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"
+              />
+            </svg>
+          </a>
+          <button class="language-button" id="languageButton" type="button">中 / EN</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section" id="home">
+        <div class="hero-shell">
+          <div class="hero-copy">
+            <p class="pill">✦ AI-Powered Zine Prompt Generator</p>
+            <h1>Zine Studio</h1>
+            <p class="hero-tagline">Create Your Zine. Tell Your Story.</p>
+            <p class="hero-description">
+              AI 助你生成专属 Zine 创作 Prompt<br />
+              用于旅行、粉丝、文创、IP、摄影、成长记录等多种场景
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#generator">开始生成 Prompt</a>
+              <a class="button button-secondary" href="#examples">查看示例作品</a>
+            </div>
+          </div>
+
+          <div class="travel-diary" aria-label="Travel diary illustration">
+            <div class="paper-tape tape-one"></div>
+            <div class="paper-tape tape-two"></div>
+            <div class="open-book">
+              <div class="book-page left-page">
+                <span class="handwriting">TRAVEL</span>
+                <div class="photo-card sea-photo"></div>
+                <span class="caption-line">collect moments</span>
+                <span class="ticket ticket-small">CITY LIGHT<br />51.25</span>
+              </div>
+              <div class="book-page right-page">
+                <span class="stamp">AIR MAIL<br />70</span>
+                <div class="photo-card street-photo"></div>
+                <span class="postmark"></span>
+                <span class="ticket ticket-red">ADMIT<br />ONE</span>
+              </div>
+            </div>
+            <div class="camera-shape">
+              <span></span>
+            </div>
+            <div class="daisy">✿</div>
+            <div class="sparkle sparkle-one">✧</div>
+            <div class="sparkle sparkle-two">✦</div>
+          </div>
+        </div>
+
+        <div class="feature-strip" aria-label="Main workflow">
+          <article>
+            <span class="feature-icon">📖</span>
+            <div>
+              <h2>选择类型</h2>
+              <p>Zine Types</p>
+            </div>
+          </article>
+          <article>
+            <span class="feature-icon">❤️</span>
+            <div>
+              <h2>选择风格</h2>
+              <p>Styles</p>
+            </div>
+          </article>
+          <article>
+            <span class="feature-icon">🖊️</span>
+            <div>
+              <h2>生成 Prompt</h2>
+              <p>Get Prompt</p>
+            </div>
+          </article>
+          <article>
+            <span class="feature-icon">📋</span>
+            <div>
+              <h2>复制使用</h2>
+              <p>Copy &amp; Use</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section how-to-section" id="how-to-use" aria-labelledby="how-to-title">
+        <div class="section-heading">
+          <p class="section-kicker">How to Use</p>
+          <h2 id="how-to-title">三步开始创作</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>填写创作信息</h3>
+            <p>选择类型、风格、页数和使用场景，再补充主题、读者、素材与要求。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>生成双语 Prompt</h3>
+            <p>页面会把你的信息整理成完整、可复制、结构清晰的 Zine 制作说明。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>复制到 AI 工具</h3>
+            <p>把 Prompt 粘贴到任意 AI 工具中，继续扩写文案、排版方案或图片提示词。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-heading">
+          <p class="section-kicker">Roadmap</p>
+          <h2 id="roadmap-title">项目路线图</h2>
+        </div>
+        <div class="roadmap-list" id="roadmapList"></div>
+      </section>
+
+      <section class="section generator-section" id="generator" aria-labelledby="generator-title">
+        <div class="section-heading">
+          <p class="section-kicker">Prompt Generator</p>
+          <h2 id="generator-title">填写信息，生成你的 Zine 创作 Prompt</h2>
+        </div>
+
+        <div class="generator-layout">
+          <form class="generator-form" id="zineForm">
+            <label class="field">
+              <span>Zine 类型 / Zine Type</span>
+              <select id="zineType" name="zineType"></select>
+            </label>
+
+            <label class="field">
+              <span>设计风格 / Style</span>
+              <select id="style" name="style"></select>
+            </label>
+
+            <label class="field">
+              <span>页数 / Pages</span>
+              <select id="pages" name="pages"></select>
+            </label>
+
+            <label class="field">
+              <span>使用场景 / Use Case</span>
+              <select id="useCase" name="useCase"></select>
+            </label>
+
+            <label class="field">
+              <span>主题 / Theme</span>
+              <input
+                id="theme"
+                name="theme"
+                type="text"
+                placeholder="例如：成都三日游 / Chengdu Trip"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field">
+              <span>目标读者 / Audience</span>
+              <input
+                id="audience"
+                name="audience"
+                type="text"
+                placeholder="例如：喜欢旅行记录的人 / Travel lovers"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field">
+              <span>情绪氛围 / Mood</span>
+              <input
+                id="mood"
+                name="mood"
+                type="text"
+                placeholder="例如：温暖、治愈、怀旧 / Warm, Healing, Nostalgic"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field field-wide">
+              <span>素材描述 / Materials</span>
+              <textarea
+                id="materials"
+                name="materials"
+                rows="5"
+                placeholder="例如：照片 30 张，包含街景、食物、车票、咖啡馆、人物背影"
+              ></textarea>
+            </label>
+
+            <label class="field field-wide">
+              <span>额外要求 / Additional Notes</span>
+              <textarea
+                id="additionalNotes"
+                name="additionalNotes"
+                rows="5"
+                placeholder="例如：加入手绘地图、票据拼贴、旅行日记感"
+              ></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button class="button button-primary" id="generateButton" type="submit">
+                生成 Prompt / Generate Prompt
+              </button>
+              <button class="button button-ghost" id="copyButton" type="button">
+                复制 Prompt / Copy Prompt
+              </button>
+              <button class="button button-secondary" id="clearButton" type="button">
+                清空表单 / Clear
+              </button>
+            </div>
+          </form>
+
+          <section class="prompt-result is-hidden" id="promptResult" aria-labelledby="result-title">
+            <div class="result-heading">
+              <p class="section-kicker">Generated Prompt</p>
+              <h3 id="result-title">生成结果</h3>
+            </div>
+            <textarea
+              id="promptOutput"
+              readonly
+              aria-label="Generated bilingual zine prompt"
+            ></textarea>
+            <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="zine-types" aria-labelledby="zine-types-title">
+        <div class="section-heading">
+          <p class="section-kicker">Zine Types</p>
+          <h2 id="zine-types-title">选择你的创作方向</h2>
+        </div>
+        <div class="card-grid type-grid" id="zineTypeCards"></div>
+      </section>
+
+      <section class="section" id="styles" aria-labelledby="styles-title">
+        <div class="section-heading">
+          <p class="section-kicker">Popular Styles</p>
+          <h2 id="styles-title">给 Zine 一个明确的视觉性格</h2>
+        </div>
+        <div class="card-grid style-grid" id="styleCards"></div>
+      </section>
+
+      <section class="section" id="examples" aria-labelledby="examples-title">
+        <div class="section-heading">
+          <p class="section-kicker">Examples</p>
+          <h2 id="examples-title">示例作品</h2>
+        </div>
+        <div class="card-grid example-grid" id="exampleCards"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <section>
+          <h2>Zine Studio</h2>
+          <p>中英双语 AI Zine Prompt Generator，让每个创作者都能轻松启动自己的小册子项目。</p>
+        </section>
+        <section>
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#zine-types">Zine Types</a>
+          <a href="#styles">Styles</a>
+          <a href="#examples">Examples</a>
+        </section>
+        <section>
+          <h3>Resources</h3>
+          <a href="#how-to-use">How to Use</a>
+          <a href="#generator">Prompt Generator</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="README.md">README</a>
+        </section>
+        <section>
+          <h3>Follow Us</h3>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <span>Instagram</span>
+          <span>小红书</span>
+        </section>
+      </div>
+    </footer>
+
+    <script src="src/data.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>
