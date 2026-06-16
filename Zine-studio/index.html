@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Zine Studio is a bilingual AI Zine prompt generator for creators."
+    />
+    <title>Zine Studio</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro-panel" aria-labelledby="app-title">
+        <div class="brand-row">
+          <span class="brand-mark" aria-hidden="true">ZS</span>
+          <span class="brand-name">Zine Studio</span>
+        </div>
+
+        <div class="intro-copy">
+          <p class="eyebrow">AI Zine Prompt Generator</p>
+          <h1 id="app-title">把灵感整理成可复制的中英双语 Zine Prompt。</h1>
+          <p>
+            填写主题、素材、读者和风格，生成可直接用于 ChatGPT、Claude、Gemini、通义千问、豆包等工具的完整制作说明。
+          </p>
+        </div>
+
+        <div class="zine-preview" aria-hidden="true">
+          <div class="preview-page preview-page-left">
+            <span>Travel</span>
+            <strong>ZINE</strong>
+            <i></i>
+          </div>
+          <div class="preview-page preview-page-right">
+            <span>Prompt</span>
+            <strong>Studio</strong>
+            <i></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Zine Prompt Generator">
+        <form id="zineForm" class="form-panel">
+          <div class="form-header">
+            <div>
+              <p class="eyebrow">Create</p>
+              <h2>制作信息</h2>
+            </div>
+            <button class="ghost-button" type="button" id="clearButton">Clear</button>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Zine 类型</span>
+              <select id="zineType" name="zineType"></select>
+            </label>
+
+            <label class="field">
+              <span>设计风格</span>
+              <select id="designStyle" name="designStyle"></select>
+            </label>
+
+            <label class="field">
+              <span>Zine 主题</span>
+              <input
+                id="theme"
+                name="theme"
+                type="text"
+                placeholder="例：成都三日城市漫游"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field">
+              <span>目标读者</span>
+              <input
+                id="audience"
+                name="audience"
+                type="text"
+                placeholder="例：喜欢城市散步和咖啡馆的年轻创作者"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field">
+              <span>页数</span>
+              <input id="pages" name="pages" type="number" min="4" max="64" value="12" />
+            </label>
+
+            <label class="field">
+              <span>使用场景</span>
+              <input
+                id="useCase"
+                name="useCase"
+                type="text"
+                placeholder="例：社交媒体发布、打印成册、作品集展示"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field field-wide">
+              <span>素材描述</span>
+              <textarea
+                id="materials"
+                name="materials"
+                rows="4"
+                placeholder="例：手机照片、地铁票根、咖啡店菜单、手写路线、天气记录"
+              ></textarea>
+            </label>
+
+            <label class="field">
+              <span>想要的情绪氛围</span>
+              <input
+                id="mood"
+                name="mood"
+                type="text"
+                placeholder="例：轻松、温暖、带一点复古电影感"
+                autocomplete="off"
+              />
+            </label>
+
+            <label class="field field-wide">
+              <span>额外要求</span>
+              <textarea
+                id="extraRequirements"
+                name="extraRequirements"
+                rows="4"
+                placeholder="例：每页给出标题、画面建议、排版建议和中英文短句"
+              ></textarea>
+            </label>
+          </div>
+
+          <button class="primary-button" type="submit">Generate Prompt</button>
+        </form>
+
+        <section class="output-panel" aria-labelledby="output-title">
+          <div class="output-header">
+            <div>
+              <p class="eyebrow">Output</p>
+              <h2 id="output-title">生成结果</h2>
+            </div>
+            <button class="ghost-button" type="button" id="copyButton">Copy</button>
+          </div>
+
+          <textarea
+            id="promptOutput"
+            class="prompt-output"
+            readonly
+            placeholder="生成后的中英双语 Prompt 会显示在这里。"
+          ></textarea>
+          <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
+

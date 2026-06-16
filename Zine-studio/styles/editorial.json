@@ -1,0 +1,9 @@
+{
+  "id": "editorial",
+  "nameZh": "杂志风",
+  "nameEn": "Editorial",
+  "palette": ["black", "white", "signal red", "muted neutral"],
+  "layout": "strong headlines, image-led spreads, columns, precise captions",
+  "texture": "print magazine paper, sharp contrast"
+}
+

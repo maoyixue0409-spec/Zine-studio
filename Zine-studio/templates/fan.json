@@ -1,0 +1,15 @@
+{
+  "id": "fan",
+  "nameZh": "粉丝制品",
+  "nameEn": "Fan Zine",
+  "sections": [
+    "cover",
+    "profile",
+    "timeline",
+    "favoriteMoments",
+    "fanMessages",
+    "closing"
+  ],
+  "recommendedPages": 12
+}
+

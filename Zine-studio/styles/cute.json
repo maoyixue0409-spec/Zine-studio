@@ -1,0 +1,9 @@
+{
+  "id": "cute",
+  "nameZh": "可爱",
+  "nameEn": "Cute",
+  "palette": ["soft pink", "butter yellow", "sky blue", "cream"],
+  "layout": "rounded blocks, small icons, gentle spacing, diary notes",
+  "texture": "soft paper, stickers, doodles"
+}
+

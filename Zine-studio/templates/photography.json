@@ -1,0 +1,15 @@
+{
+  "id": "photography",
+  "nameZh": "摄影集",
+  "nameEn": "Photography Zine",
+  "sections": [
+    "cover",
+    "artistStatement",
+    "sequence",
+    "captions",
+    "visualRhythm",
+    "closing"
+  ],
+  "recommendedPages": 16
+}
+

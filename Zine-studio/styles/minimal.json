@@ -1,0 +1,9 @@
+{
+  "id": "minimal",
+  "nameZh": "极简",
+  "nameEn": "Minimal",
+  "palette": ["warm white", "black", "soft gray", "single accent color"],
+  "layout": "large margins, quiet grids, restrained typography",
+  "texture": "smooth paper, subtle lines"
+}
+

@@ -1,0 +1,15 @@
+{
+  "id": "ip",
+  "nameZh": "IP 设定集",
+  "nameEn": "IP Guidebook",
+  "sections": [
+    "cover",
+    "worldview",
+    "characters",
+    "symbols",
+    "storySeeds",
+    "extensions"
+  ],
+  "recommendedPages": 16
+}
+

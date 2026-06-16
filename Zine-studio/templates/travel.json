@@ -1,0 +1,15 @@
+{
+  "id": "travel",
+  "nameZh": "旅行相册",
+  "nameEn": "Travel Album",
+  "sections": [
+    "cover",
+    "route",
+    "places",
+    "materials",
+    "memories",
+    "closing"
+  ],
+  "recommendedPages": 12
+}
+

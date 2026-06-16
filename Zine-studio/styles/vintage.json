@@ -1,0 +1,9 @@
+{
+  "id": "vintage",
+  "nameZh": "复古",
+  "nameEn": "Vintage",
+  "palette": ["sepia", "faded red", "olive", "cream"],
+  "layout": "classic title pages, framed photos, archival captions",
+  "texture": "aged paper, film grain, soft fading"
+}
+

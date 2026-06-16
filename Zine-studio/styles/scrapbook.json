@@ -1,0 +1,9 @@
+{
+  "id": "scrapbook",
+  "nameZh": "拼贴",
+  "nameEn": "Scrapbook",
+  "palette": ["paper beige", "ink black", "sticker colors", "tape yellow"],
+  "layout": "layered photos, labels, stamps, handwritten notes",
+  "texture": "paper scraps, tape, tickets, torn edges"
+}
+

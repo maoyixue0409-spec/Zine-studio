@@ -1,0 +1,15 @@
+{
+  "id": "cultural-product",
+  "nameZh": "文创产品",
+  "nameEn": "Cultural Creative Product",
+  "sections": [
+    "cover",
+    "origin",
+    "productStory",
+    "materials",
+    "usage",
+    "packaging"
+  ],
+  "recommendedPages": 10
+}
+
