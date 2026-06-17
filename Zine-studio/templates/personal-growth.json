@@ -1,15 +1,15 @@
 {
-  "id": "personal-growth",
-  "nameZh": "个人成长记录",
-  "nameEn": "Personal Growth Journal",
+  "id": "personal-journal",
+  "nameZh": "个人记录",
+  "nameEn": "Personal Journal",
   "sections": [
     "cover",
     "timeline",
-    "milestones",
-    "reflections",
-    "letters",
+    "places",
+    "photos",
+    "objects",
+    "notes",
     "closing"
   ],
   "recommendedPages": 12
 }
-

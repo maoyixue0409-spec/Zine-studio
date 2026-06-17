@@ -1,99 +1,50 @@
 # Zine Studio
 
-Zine Studio 是一个中英双语 AI Zine 生成工具。创作者可以在网页中填写 Zine 类型、设计风格、页数、用途、主题、素材描述和文字内容，系统会自动生成一段完整的中英双语 Zine 制作 Prompt。
+Zine Studio is an open-source AI-powered Zine planning toolkit.
 
-用户可以把生成的 Prompt 复制到 ChatGPT、Claude、Gemini、通义千问、豆包等 AI 工具中使用。当前版本不接入真实 AI API，所有内容都在浏览器本地生成。
+It helps creators generate:
+
+- Content structure
+- Page planning
+- Layout ideas
+- Style references
+- AI prompts
+- Print planning
+
+for travel zines, photography books, fan projects, cultural products, IP guidebooks and personal journals.
+
+Zine Studio 是一个开源 AI Zine 创作工具。
+
+帮助创作者快速生成：
+
+- 内容结构
+- 页面规划
+- 排版建议
+- 风格参考
+- AI Prompt
+- 打印规划
+
+适用于旅行相册、摄影集、粉丝制品、文创产品、IP设定集和个人记录。
 
 ## Features
 
-- 中英双语 Prompt 生成
-- 6 种 Zine 类型
-- 6 种视觉风格
-- 表单输入主题、素材、目标读者、页数、使用场景、情绪氛围和额外要求
-- 一键复制 Prompt
-- 一键清空表单
-- 纯 HTML、CSS、JavaScript 静态网页
-- 适合 GitHub 开源维护的目录结构
+- Pure HTML, CSS and JavaScript.
+- No React, no backend, no API.
+- Runs locally by opening `index.html`.
+- Supports Zine Planning Prompt and Image Prompt output modes.
+- Generates image prompts for Midjourney, Stable Diffusion, DALL·E, 即梦 and 可灵.
+- Generates 4 local visual reference thumbnails for cover, opening spread, material collage and detail poster.
+- Supports Travel Zine, Photography Zine, Fan Zine, Cultural Product Zine, IP Guidebook and Personal Journal.
+- Includes reusable data in `src/data.js` for types, styles, examples, roadmap and image tools.
 
-## Zine Types
+## Local Usage
 
-- 旅行相册 Travel Album
-- 粉丝制品 Fan Zine
-- 文创产品 Cultural Creative Product
-- IP 设定集 IP Guidebook
-- 摄影集 Photography Zine
-- 个人成长记录 Personal Growth Journal
+Open `index.html` directly in a modern browser.
 
-## Design Styles
-
-- 极简 Minimal
-- 拼贴 Scrapbook
-- 复古 Vintage
-- Y2K
-- 可爱 Cute
-- 杂志风 Editorial
-
-## Project Structure
-
-```text
-zine-studio/
-├── README.md
-├── LICENSE
-├── package.json
-├── .gitignore
-├── index.html
-├── src/
-│   ├── style.css
-│   ├── app.js
-│   └── data.js
-├── prompts/
-│   ├── system-prompt.md
-│   ├── travel-zine.md
-│   ├── fan-zine.md
-│   ├── cultural-product-zine.md
-│   ├── ip-zine.md
-│   ├── photography-zine.md
-│   └── personal-growth-zine.md
-├── templates/
-│   ├── travel.json
-│   ├── fan.json
-│   ├── cultural-product.json
-│   ├── ip.json
-│   ├── photography.json
-│   └── personal-growth.json
-├── styles/
-│   ├── minimal.json
-│   ├── scrapbook.json
-│   ├── vintage.json
-│   ├── y2k.json
-│   ├── cute.json
-│   └── editorial.json
-├── examples/
-│   ├── chengdu-travel-zine.md
-│   ├── idol-fanzine.md
-│   ├── cultural-product-zine.md
-│   ├── original-ip-zine.md
-│   ├── photography-zine.md
-│   └── personal-growth-zine.md
-└── docs/
-    ├── getting-started.md
-    ├── zine-types.md
-    ├── style-guide.md
-    ├── print-guide.md
-    ├── codex-skill-plan.md
-    └── roadmap.md
-```
-
-## Quick Start
-
-### Option 1: Open Directly
-
-Open `index.html` in a modern browser.
-
-### Option 2: Run Local Server
+You can also use a static server:
 
 ```bash
-npm start
+python3 -m http.server 4173
 ```
 
 Then open:
@@ -102,43 +53,115 @@ Then open:
 http://localhost:4173
 ```
 
-If `npm` is not available on your machine, run:
+## Project Structure
 
-```bash
-python3 -m http.server 4173
+```text
+Zine-studio/
+├── index.html
+├── README.md
+└── src/
+    ├── style.css
+    ├── app.js
+    └── data.js
 ```
 
-## How It Works
+## Core Architecture
 
-1. The user selects a Zine type and visual style.
-2. The user fills in theme, materials, audience, page count, use case, mood, and extra requirements.
-3. `src/app.js` reads the form values.
-4. `src/data.js` provides bilingual labels and structured guidance.
-5. The app combines the values into a complete bilingual Prompt.
-6. The generated Prompt is shown in the output panel and can be copied.
+Future development centers on three modules.
 
-## Development Notes
+### Prompt Engine
 
-- `index.html` defines the page structure.
-- `src/style.css` controls visual design and responsive layout.
-- `src/data.js` stores Zine type and style data.
-- `src/app.js` handles form actions and Prompt generation.
-- `prompts/` stores reusable Prompt templates for each Zine type.
-- `templates/` stores structured JSON templates.
-- `styles/` stores structured JSON style profiles.
-- `examples/` stores ready-to-read sample outputs.
-- `docs/` stores user and contributor documentation.
+- Prompt generation
+- Prompt templates
+- Prompt Library
+- Tool-specific image prompts
 
-## Future Direction
+### Layout Engine
 
-Zine Studio will expand into:
+- Page planning
+- Table of contents planning
+- Page structure
+- Zine Layout
 
-- A richer Prompt library
-- Exportable Markdown and JSON prompt packs
-- A Codex Skill
-- A ChatGPT Skill
-- Community contributed Zine templates
-- Print layout guidance for foldable and booklet formats
+### Style Engine
+
+- Style system
+- Color system
+- Typography system
+- Visual references
+
+## Examples
+
+### Travel Zine
+
+- Chengdu Travel Zine
+- Japan Railway Travel Zine
+- Iceland Road Trip Zine
+
+### Photography Zine
+
+- Street Photography Zine
+- Film Photography Zine
+- Landscape Photography Zine
+
+### Fan Zine
+
+- Idol Fan Zine
+- Anime Fan Zine
+- Game Character Fan Zine
+
+### IP Zine
+
+- Original Character Guidebook
+- Fantasy Worldbuilding Zine
+- Creature Encyclopedia Zine
+
+### Cultural Product Zine
+
+- Museum Product Zine
+- City Souvenir Zine
+- Coffee Brand Zine
+
+### Personal Journal
+
+- Growth Journal
+- Memory Archive
+- Life Timeline
+
+## Roadmap
+
+- V0.1 Prompt Generator
+- V0.2 Prompt Library
+- V0.3 Layout Engine
+- V0.4 Style Engine
+- V0.5 Template Marketplace
+- V1.0 Zine Studio Skill
+
+The Template Marketplace will support community uploads for:
+
+- Travel Templates
+- Photography Templates
+- Fan Templates
+- IP Templates
+- Cultural Product Templates
+
+## Final Goal
+
+Build an independent open-source Zine creation ecosystem:
+
+Prompt Engine + Layout Engine + Style Engine + Template Marketplace + Zine Studio Skill.
+
+Zine Studio is a product project for creators and communities. It is not a personal blog, photography portfolio or personal brand website.
+
+## Contributing
+
+Contributions are welcome. Good first contributions include:
+
+- New Zine templates
+- New image prompt formats
+- New style references
+- Better thumbnail layouts
+- Documentation improvements
 
 ## License
 
