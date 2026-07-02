@@ -9,6 +9,20 @@ window.ZINE_STUDIO_DATA = {
     additionalNotes: "加入手绘地图、票据拼贴、纸张纹理和独立杂志排版感"
   },
 
+  demoDraft: {
+    zineType: "travel-album",
+    style: "scrapbook",
+    pages: "16",
+    useCase: "social-media",
+    theme: "城市周末漫游 / City Weekend Walk",
+    audience: "喜欢旅行、咖啡馆、城市散步和纸质手账的创作者 / creators who love travel, cafes, city walks and paper journals",
+    mood: "轻松、温暖、复古、像收集城市碎片 / relaxed, warm, vintage, collecting city fragments",
+    materials:
+      "照片 24 张，包含街景、咖啡馆、车票、菜单、窗边光影、路牌、手写路线和小物件。",
+    additionalNotes:
+      "希望有拼贴感、手写地图、票据边框、照片图注、封面标题和适合社交媒体分享的排版建议。"
+  },
+
   zineTypes: [
     {
       id: "travel-album",

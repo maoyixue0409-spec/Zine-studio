@@ -67,15 +67,15 @@
           <article>
             <span class="feature-icon">📖</span>
             <div>
-              <h2>选择类型</h2>
-              <p>Zine Types</p>
+              <h2>填写信息</h2>
+              <p>Zine Info</p>
             </div>
           </article>
           <article>
-            <span class="feature-icon">❤️</span>
+            <span class="feature-icon">🖼️</span>
             <div>
-              <h2>选择风格</h2>
-              <p>Styles</p>
+              <h2>上传参考</h2>
+              <p>References</p>
             </div>
           </article>
           <article>
@@ -83,13 +83,6 @@
             <div>
               <h2>生成 Prompt</h2>
               <p>Get Prompt</p>
-            </div>
-          </article>
-          <article>
-            <span class="feature-icon">📋</span>
-            <div>
-              <h2>复制使用</h2>
-              <p>Copy &amp; Use</p>
             </div>
           </article>
         </div>
@@ -103,18 +96,18 @@
         <div class="steps">
           <article>
             <span>01</span>
-            <h3>填写创作信息</h3>
-            <p>选择类型、风格、页数和使用场景，再补充主题、读者、素材与要求。</p>
+            <h3>填写 Zine 信息</h3>
+            <p>选择类型、风格、页数、用途和主题，其他细节可以先用默认示例。</p>
           </article>
           <article>
             <span>02</span>
-            <h3>生成双语 Prompt</h3>
-            <p>页面会把你的信息整理成完整、可复制、结构清晰的 Zine 制作说明。</p>
+            <h3>上传参考</h3>
+            <p>上传素材图和风格图，让 Prompt 自动包含素材信息、主色和风格关键词。</p>
           </article>
           <article>
             <span>03</span>
-            <h3>复制到 AI 工具</h3>
-            <p>把 Prompt 粘贴到任意 AI 工具中，继续扩写文案、排版方案或图片提示词。</p>
+            <h3>生成 Prompt</h3>
+            <p>切换 Zine Planning Prompt 或 Image Prompt，一键复制或下载后继续使用。</p>
           </article>
         </div>
       </section>
@@ -127,160 +120,215 @@
 
         <div class="generator-layout">
           <form class="generator-form" id="zineForm">
-            <label class="field">
-              <span>Zine 类型 / Zine Type</span>
-              <select id="zineType" name="zineType"></select>
-            </label>
+            <section class="workflow-step workflow-step-info" aria-labelledby="step-info-title">
+              <div class="workflow-step-heading">
+                <span>Step 1</span>
+                <div>
+                  <h3 id="step-info-title">填写 Zine 信息</h3>
+                  <p>先填最关键的信息，其他内容可以用默认示例生成。</p>
+                </div>
+              </div>
 
-            <label class="field">
-              <span>设计风格 / Style</span>
-              <select id="style" name="style"></select>
-            </label>
-
-            <label class="field">
-              <span>页数 / Pages</span>
-              <select id="pages" name="pages"></select>
-            </label>
-
-            <label class="field">
-              <span>使用场景 / Use Case</span>
-              <select id="useCase" name="useCase"></select>
-            </label>
-
-            <label class="field">
-              <span>主题 / Theme</span>
-              <input
-                id="theme"
-                name="theme"
-                type="text"
-                placeholder="例如：成都三日游 / Chengdu Trip"
-                autocomplete="off"
-              />
-            </label>
-
-            <label class="field">
-              <span>目标读者 / Audience</span>
-              <input
-                id="audience"
-                name="audience"
-                type="text"
-                placeholder="例如：喜欢旅行记录的人 / Travel lovers"
-                autocomplete="off"
-              />
-            </label>
-
-            <label class="field">
-              <span>情绪氛围 / Mood</span>
-              <input
-                id="mood"
-                name="mood"
-                type="text"
-                placeholder="例如：温暖、治愈、怀旧 / Warm, Healing, Nostalgic"
-                autocomplete="off"
-              />
-            </label>
-
-            <label class="field field-wide">
-              <span>素材描述 / Materials</span>
-              <textarea
-                id="materials"
-                name="materials"
-                rows="5"
-                placeholder="例如：照片 30 张，包含街景、食物、车票、咖啡馆、人物背影"
-              ></textarea>
-            </label>
-
-            <div class="field field-wide material-library">
-              <span>素材库 / Materials Library</span>
-              <div class="material-controls">
-                <label class="upload-button" for="materialUpload">上传素材 / Upload Materials</label>
-                <input id="materialUpload" type="file" accept="image/*" multiple />
-                <label class="material-tag-field">
-                  <span>素材标签 / Material Tag</span>
-                  <select id="materialTag"></select>
+              <div class="step-grid">
+                <label class="field">
+                  <span>Zine 类型 / Zine Type</span>
+                  <select id="zineType" name="zineType"></select>
                 </label>
-                <button class="button button-ghost" id="clearMaterialsButton" type="button">
-                  清空素材 / Clear Materials
-                </button>
-              </div>
-              <div class="material-preview" id="materialPreview" aria-live="polite">
-                <p>上传图片后会显示缩略图，并自动写入 Prompt。</p>
-              </div>
-            </div>
 
-            <div class="field field-wide material-library">
-              <span>风格参考图 / Style Reference Images</span>
-              <div class="material-controls">
-                <label class="upload-button" for="styleReferenceUpload">
-                  上传风格图 / Upload Style Images
+                <label class="field">
+                  <span>设计风格 / Style</span>
+                  <select id="style" name="style"></select>
                 </label>
-                <input id="styleReferenceUpload" type="file" accept="image/*" multiple />
-                <label class="material-tag-field">
-                  <span>参考类型 / Reference Type</span>
-                  <select id="styleReferenceTag"></select>
+
+                <label class="field">
+                  <span>页数 / Pages</span>
+                  <select id="pages" name="pages"></select>
                 </label>
-                <button class="button button-ghost" id="clearStyleReferencesButton" type="button">
-                  清空风格图 / Clear Style Images
+
+                <label class="field">
+                  <span>使用场景 / Use Case</span>
+                  <select id="useCase" name="useCase"></select>
+                </label>
+
+                <label class="field field-wide">
+                  <span>主题 / Theme</span>
+                  <input
+                    id="theme"
+                    name="theme"
+                    type="text"
+                    placeholder="例如：城市周末漫游 / City Weekend Walk"
+                    autocomplete="off"
+                  />
+                </label>
+              </div>
+
+              <details class="optional-details">
+                <summary>补充更多细节 / More Details</summary>
+                <div class="step-grid">
+                  <label class="field">
+                    <span>目标读者 / Audience</span>
+                    <input
+                      id="audience"
+                      name="audience"
+                      type="text"
+                      placeholder="例如：喜欢旅行记录的人 / Travel lovers"
+                      autocomplete="off"
+                    />
+                  </label>
+
+                  <label class="field">
+                    <span>情绪氛围 / Mood</span>
+                    <input
+                      id="mood"
+                      name="mood"
+                      type="text"
+                      placeholder="例如：温暖、治愈、怀旧 / Warm, Healing, Nostalgic"
+                      autocomplete="off"
+                    />
+                  </label>
+
+                  <label class="field field-wide">
+                    <span>素材描述 / Materials</span>
+                    <textarea
+                      id="materials"
+                      name="materials"
+                      rows="4"
+                      placeholder="例如：照片 30 张，包含街景、食物、车票、咖啡馆、人物背影"
+                    ></textarea>
+                  </label>
+
+                  <label class="field field-wide">
+                    <span>额外要求 / Additional Notes</span>
+                    <textarea
+                      id="additionalNotes"
+                      name="additionalNotes"
+                      rows="4"
+                      placeholder="例如：加入手绘地图、票据拼贴、旅行日记感"
+                    ></textarea>
+                  </label>
+                </div>
+              </details>
+
+              <div class="utility-actions">
+                <button class="button button-secondary" id="fillExampleButton" type="button">
+                  填充示例 / Fill Example
+                </button>
+                <button class="button button-ghost" id="saveDraftButton" type="button">
+                  保存草稿 / Save Draft
+                </button>
+                <button class="button button-ghost" id="loadDraftButton" type="button">
+                  读取草稿 / Load Draft
                 </button>
               </div>
-              <div class="material-preview" id="styleReferencePreview" aria-live="polite">
-                <p>上传风格图后会显示缩略图、尺寸和主色，并生成可复制的风格关键词。</p>
+            </section>
+
+            <section class="workflow-step workflow-step-upload" aria-labelledby="step-upload-title">
+              <div class="workflow-step-heading">
+                <span>Step 2</span>
+                <div>
+                  <h3 id="step-upload-title">上传参考</h3>
+                  <p>上传素材图和风格图，页面会提取文件信息与主色，写进 Prompt。</p>
+                </div>
               </div>
-              <button class="button button-secondary style-keyword-button" id="generateStyleKeywordsButton" type="button">
-                生成风格关键词 / Generate Style Keywords
-              </button>
-              <textarea
-                id="styleKeywordOutput"
-                class="style-keyword-output"
-                readonly
-                rows="6"
-                placeholder="上传风格参考图后，可以在这里生成可复制的关键词和生图 Prompt。"
-              ></textarea>
-            </div>
 
-            <label class="field field-wide">
-              <span>额外要求 / Additional Notes</span>
-              <textarea
-                id="additionalNotes"
-                name="additionalNotes"
-                rows="5"
-                placeholder="例如：加入手绘地图、票据拼贴、旅行日记感"
-              ></textarea>
-            </label>
+              <div class="field material-library">
+                <span>素材库 / Materials Library</span>
+                <div class="material-controls">
+                  <label class="upload-button" for="materialUpload">上传素材 / Upload Materials</label>
+                  <input id="materialUpload" type="file" accept="image/*" multiple />
+                  <label class="material-tag-field">
+                    <span>素材标签 / Material Tag</span>
+                    <select id="materialTag"></select>
+                  </label>
+                  <button class="button button-ghost" id="clearMaterialsButton" type="button">
+                    清空素材 / Clear Materials
+                  </button>
+                </div>
+                <div class="material-preview" id="materialPreview" aria-live="polite">
+                  <p>上传图片后会显示缩略图，并自动写入 Prompt。</p>
+                </div>
+              </div>
 
-            <div class="field field-wide">
-              <span>输出模式 / Output Mode</span>
-              <div class="mode-switch" role="group" aria-label="Output mode">
-                <button
-                  class="mode-button is-active"
-                  type="button"
-                  data-mode="planning"
-                  aria-pressed="true"
-                >
-                  Zine Planning Prompt
+              <div class="field material-library">
+                <span>风格参考图 / Style Reference Images</span>
+                <div class="material-controls">
+                  <label class="upload-button" for="styleReferenceUpload">
+                    上传风格图 / Upload Style Images
+                  </label>
+                  <input id="styleReferenceUpload" type="file" accept="image/*" multiple />
+                  <label class="material-tag-field">
+                    <span>参考类型 / Reference Type</span>
+                    <select id="styleReferenceTag"></select>
+                  </label>
+                  <button class="button button-ghost" id="clearStyleReferencesButton" type="button">
+                    清空风格图 / Clear Style Images
+                  </button>
+                </div>
+                <div class="material-preview" id="styleReferencePreview" aria-live="polite">
+                  <p>上传风格图后会显示缩略图、尺寸和主色，并生成可复制的风格关键词。</p>
+                </div>
+                <div class="style-keyword-actions">
+                  <button class="button button-secondary style-keyword-button" id="generateStyleKeywordsButton" type="button">
+                    生成风格关键词 / Generate Style Keywords
+                  </button>
+                  <button class="button button-ghost style-keyword-button" id="copyStyleKeywordsButton" type="button">
+                    复制风格关键词 / Copy Style Keywords
+                  </button>
+                </div>
+                <textarea
+                  id="styleKeywordOutput"
+                  class="style-keyword-output"
+                  readonly
+                  rows="6"
+                  placeholder="上传风格参考图后，可以在这里生成可复制的关键词和生图 Prompt。"
+                ></textarea>
+              </div>
+            </section>
+
+            <section class="workflow-step workflow-step-output" aria-labelledby="step-output-title">
+              <div class="workflow-step-heading">
+                <span>Step 3</span>
+                <div>
+                  <h3 id="step-output-title">生成 Prompt</h3>
+                  <p>选择生成规划 Prompt 或 AI 生图 Prompt，然后复制到任意 AI 工具。</p>
+                </div>
+              </div>
+
+              <div class="field">
+                <span>输出模式 / Output Mode</span>
+                <div class="mode-switch" role="group" aria-label="Output mode">
+                  <button
+                    class="mode-button is-active"
+                    type="button"
+                    data-mode="planning"
+                    aria-pressed="true"
+                  >
+                    Zine Planning Prompt
+                  </button>
+                  <button
+                    class="mode-button"
+                    type="button"
+                    data-mode="image"
+                    aria-pressed="false"
+                  >
+                    Image Prompt
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" id="generateButton" type="submit">
+                  生成 Prompt / Generate Prompt
                 </button>
-                <button
-                  class="mode-button"
-                  type="button"
-                  data-mode="image"
-                  aria-pressed="false"
-                >
-                  Image Prompt
+                <button class="button button-ghost" id="copyButton" type="button">
+                  复制 Prompt / Copy Prompt
+                </button>
+                <button class="button button-secondary" id="clearButton" type="button">
+                  清空表单 / Clear
                 </button>
               </div>
-            </div>
-
-            <div class="form-actions">
-              <button class="button button-primary" id="generateButton" type="submit">
-                生成 Prompt / Generate Prompt
-              </button>
-              <button class="button button-ghost" id="copyButton" type="button">
-                复制 Prompt / Copy Prompt
-              </button>
-              <button class="button button-secondary" id="clearButton" type="button">
-                清空表单 / Clear
-              </button>
-            </div>
+              <p class="status-message form-status" id="statusMessage" role="status" aria-live="polite"></p>
+            </section>
           </form>
 
           <section class="prompt-result is-hidden" id="promptResult" aria-labelledby="result-title">
@@ -297,7 +345,14 @@
               readonly
               aria-label="Generated bilingual zine prompt"
             ></textarea>
-            <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+            <div class="result-actions">
+              <button class="button button-secondary" id="downloadTxtButton" type="button">
+                下载 TXT / Download TXT
+              </button>
+              <button class="button button-ghost" id="downloadMarkdownButton" type="button">
+                下载 Markdown / Download MD
+              </button>
+            </div>
           </section>
         </div>
       </section>

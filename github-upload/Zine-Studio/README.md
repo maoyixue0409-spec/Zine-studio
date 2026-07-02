@@ -10,9 +10,33 @@ Zine Studio 是一个开源 AI Zine 创作工具，帮助创作者快速生成 Z
 - Generate `Image Prompt` for Midjourney, Stable Diffusion, DALL·E, 即梦 and 可灵.
 - Upload local material images and write their file information into prompts.
 - Upload style reference images and generate reusable keywords.
+- Copy style keywords for image generation tools.
+- Fill a starter example for first-time users.
+- Save and load a local text draft in the browser.
+- Download generated prompts as TXT or Markdown.
 - Extract simple color palettes from style reference images in the browser.
 - Show 4 local visual reference thumbnails for cover, opening spread, material collage and detail poster.
 - Run fully in the browser with no backend and no API.
+
+## Simple 3-Step Workflow
+
+1. Fill Zine Info
+   - Choose zine type, visual style, pages, use case and theme.
+   - Optional details such as audience, mood, materials and notes are folded away to keep the page simple.
+
+2. Upload References
+   - Upload material images such as photos, tickets, stickers, type references, colors and layout references.
+   - Upload style reference images to extract simple color palettes and generate reusable style keywords.
+
+3. Generate Prompt
+   - Switch between `Zine Planning Prompt` and `Image Prompt`.
+   - Generate, copy, or download the prompt for use in any AI tool.
+
+## Drafts and Export
+
+- `Save Draft` stores text fields and selected options in the browser with `localStorage`.
+- Uploaded images are not saved in the draft. Upload them again when needed.
+- `Download TXT` and `Download Markdown` export the generated prompt only.
 
 ## Use Cases
 

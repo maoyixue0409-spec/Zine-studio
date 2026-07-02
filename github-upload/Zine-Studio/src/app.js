@@ -14,11 +14,17 @@ const styleReferenceUpload = document.querySelector("#styleReferenceUpload");
 const styleReferenceTagSelect = document.querySelector("#styleReferenceTag");
 const clearStyleReferencesButton = document.querySelector("#clearStyleReferencesButton");
 const generateStyleKeywordsButton = document.querySelector("#generateStyleKeywordsButton");
+const copyStyleKeywordsButton = document.querySelector("#copyStyleKeywordsButton");
 const styleReferencePreview = document.querySelector("#styleReferencePreview");
 const styleKeywordOutput = document.querySelector("#styleKeywordOutput");
 const generateButton = document.querySelector("#generateButton");
 const copyButton = document.querySelector("#copyButton");
 const clearButton = document.querySelector("#clearButton");
+const fillExampleButton = document.querySelector("#fillExampleButton");
+const saveDraftButton = document.querySelector("#saveDraftButton");
+const loadDraftButton = document.querySelector("#loadDraftButton");
+const downloadTxtButton = document.querySelector("#downloadTxtButton");
+const downloadMarkdownButton = document.querySelector("#downloadMarkdownButton");
 const languageButton = document.querySelector("#languageButton");
 const modeButtons = document.querySelectorAll(".mode-button");
 const promptResult = document.querySelector("#promptResult");
@@ -35,6 +41,7 @@ let activeOutputMode = "planning";
 let buttonTimers = [];
 let uploadedMaterials = [];
 let uploadedStyleReferences = [];
+const draftStorageKey = "zine-studio-draft-v1";
 
 function addOptions(selectElement, items) {
   items.forEach((item) => {
@@ -585,6 +592,110 @@ function setStatus(message) {
   statusMessage.textContent = message;
 }
 
+function setSelectValue(selectElement, value) {
+  const matchingOption = Array.from(selectElement.options).find((option) => option.value === value);
+  if (matchingOption) {
+    selectElement.value = value;
+  }
+}
+
+function setFieldValue(selector, value) {
+  const element = form.querySelector(selector);
+  if (element) {
+    element.value = value;
+  }
+}
+
+function getDraftFromForm() {
+  const formData = new FormData(form);
+  return {
+    zineType: String(formData.get("zineType") || ""),
+    style: String(formData.get("style") || ""),
+    pages: String(formData.get("pages") || ""),
+    useCase: String(formData.get("useCase") || ""),
+    theme: String(formData.get("theme") || ""),
+    audience: String(formData.get("audience") || ""),
+    mood: String(formData.get("mood") || ""),
+    materials: String(formData.get("materials") || ""),
+    additionalNotes: String(formData.get("additionalNotes") || "")
+  };
+}
+
+function applyDraft(draft) {
+  setSelectValue(zineTypeSelect, draft.zineType);
+  setSelectValue(styleSelect, draft.style);
+  setSelectValue(pagesSelect, draft.pages);
+  setSelectValue(useCaseSelect, draft.useCase);
+  setFieldValue("#theme", draft.theme);
+  setFieldValue("#audience", draft.audience);
+  setFieldValue("#mood", draft.mood);
+  setFieldValue("#materials", draft.materials);
+  setFieldValue("#additionalNotes", draft.additionalNotes);
+}
+
+function fillExampleDraft() {
+  applyDraft(data.demoDraft);
+  setStatus("示例已填入。你可以直接生成，也可以替换成自己的主题。");
+}
+
+function saveDraft() {
+  try {
+    localStorage.setItem(draftStorageKey, JSON.stringify(getDraftFromForm()));
+    setStatus("草稿已保存。本地上传的图片不会保存，需要使用时重新上传。");
+  } catch (error) {
+    setStatus("浏览器当前不允许保存草稿。");
+  }
+}
+
+function loadDraft() {
+  try {
+    const savedDraft = localStorage.getItem(draftStorageKey);
+    if (!savedDraft) {
+      setStatus("还没有保存过草稿。");
+      return;
+    }
+    applyDraft(JSON.parse(savedDraft));
+    setStatus("草稿已读取。图片请按需要重新上传。");
+  } catch (error) {
+    setStatus("草稿读取失败，请重新保存一次。");
+  }
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.left = "-9999px";
+    document.body.append(helper);
+    helper.select();
+    document.execCommand("copy");
+    helper.remove();
+  }
+}
+
+function downloadPrompt(extension, mimeType) {
+  const text = promptOutput.value.trim();
+  if (text.length === 0) {
+    setStatus("请先生成 Prompt。");
+    return;
+  }
+
+  const blob = new Blob([text], { type: `${mimeType};charset=utf-8` });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `zine-studio-prompt.${extension}`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  setStatus(`Prompt 已下载为 ${extension.toUpperCase()} 文件。`);
+}
+
 function updateModeButtons() {
   modeButtons.forEach((button) => {
     const isActive = button.dataset.mode === activeOutputMode;
@@ -601,16 +712,21 @@ async function copyPrompt() {
     return;
   }
 
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (error) {
-    promptOutput.focus();
-    promptOutput.select();
-    document.execCommand("copy");
-  }
-
+  await copyText(text);
   showTemporaryButtonText(copyButton, "Copied ✓", data.i18n[activeLanguage].copy);
   setStatus("Prompt 已复制，可以粘贴到任意 AI 工具中使用。");
+}
+
+async function copyStyleKeywords() {
+  const text = styleKeywordOutput.value.trim();
+  if (text.length === 0 || text.includes("Upload style reference images first")) {
+    setStatus("请先上传风格参考图，再生成风格关键词。");
+    return;
+  }
+
+  await copyText(text);
+  showTemporaryButtonText(copyStyleKeywordsButton, "Copied ✓", "复制风格关键词 / Copy Style Keywords");
+  setStatus("风格关键词已复制。");
 }
 
 function generatePrompt(event) {
@@ -680,6 +796,12 @@ function initializeApp() {
   styleReferenceUpload.addEventListener("change", addStyleReferenceImages);
   clearStyleReferencesButton.addEventListener("click", clearStyleReferenceLibrary);
   generateStyleKeywordsButton.addEventListener("click", generateStyleKeywords);
+  copyStyleKeywordsButton.addEventListener("click", copyStyleKeywords);
+  fillExampleButton.addEventListener("click", fillExampleDraft);
+  saveDraftButton.addEventListener("click", saveDraft);
+  loadDraftButton.addEventListener("click", loadDraft);
+  downloadTxtButton.addEventListener("click", () => downloadPrompt("txt", "text/plain"));
+  downloadMarkdownButton.addEventListener("click", () => downloadPrompt("md", "text/markdown"));
   copyButton.addEventListener("click", copyPrompt);
   clearButton.addEventListener("click", clearForm);
   languageButton.addEventListener("click", toggleLanguage);
